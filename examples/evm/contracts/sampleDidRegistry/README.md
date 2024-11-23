@@ -61,7 +61,7 @@ Handles metadata updates, anchoring, and logging.
 	•	anchorOnChain
 	•	Events: MetadataSet, AuditLogEmitted, DataAnchored
 
-b) RolesAndPermissions.sol
+b) DidManager.sol
 
 Defines roles and permissions for interacting with the contract.
 	•	Functions:
@@ -69,25 +69,17 @@ Defines roles and permissions for interacting with the contract.
 	•	getRole
 	•	Events: RoleAssigned
 
-c) FeeManagement.sol
-
 Manages fees for operations.
 	•	Functions:
 	•	setFee
 	•	getFee
 	•	Events: FeeSet
 
-d) MultiSignatureSecurity.sol
-
 Provides multi-signature functionality for secure actions.
 	•	Functions:
 	•	executeMultiSigAction
 	•	rotateKeys
 	•	Events: MultiSigExecuted, KeysRotated
-
-3. Utility Library
-
-a) SignatureUtils.sol
 
 Handles internal signature validation and expiration checks.
 	•	Functions:
