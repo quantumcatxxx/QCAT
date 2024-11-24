@@ -1,7 +1,8 @@
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-contract SampleToken {
+contract TheQuantumCat {
 
     mapping(address => uint) private balances;
     mapping(address => mapping(address => uint)) private allowances;
@@ -15,12 +16,12 @@ contract SampleToken {
     event Transfer(address indexed from, address indexed to, uint value);
     event Approval(address indexed owner, address indexed spender, uint value);
     
-    constructor(string memory _name, string memory _sym, uint _dec, uint _ts) {
-        name = _name;
-        symbol = _sym;
-        decimals = _dec;
-        totalSupply = _ts * 10 ** _dec;
-        balances[msg.sender] = totalSupply;
+    constructor() {
+        name = "TheQuantumCat";
+        symbol = "QCAT";
+        decimals = 18; // La norme ERC20 utilise généralement 18 décimales
+        totalSupply = 2000000000 * 10 ** decimals; // 2 milliards de tokens
+        balances[msg.sender] = totalSupply; // Le créateur du contrat reçoit tous les tokens
     }
 
     function allowance(address owner, address spender) external view returns(uint) {
