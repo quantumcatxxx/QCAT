@@ -45,10 +45,10 @@ let factory = new ethers.ContractFactory(
 
 // define constructor arguments and deploy contract
 const constructorArgs = {
-    _name: "SToken",
-    _sym: "STK",
+    _name: "The Quantum Cat",
+    _sym: "QCAT",
     _dec: 18,
-    _ts: 100_000_000
+    _ts: 2000000000
 };
 factory = await factory.deploy(...Object.values(constructorArgs))
 
