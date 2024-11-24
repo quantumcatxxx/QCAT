@@ -1,3 +1,4 @@
+
 import { ethers } from "ethers";
 import { execSync } from "child_process";
 import { existsSync, readFileSync } from "fs";
@@ -48,8 +49,13 @@ const constructorArgs = {
     _name: "The Quantum Cat",
     _sym: "QCAT",
     _dec: 18,
-    _ts: 2000000000
+    _ts: 2_000_000_000
 };
+
+// Log the deployment transaction data (before sending)
+const deploymentTx = await factory.getDeployTransaction(...Object.values(constructorArgs));
+console.log('Deployment transaction data (before sending):', JSON.stringify(deploymentTx, null, 2));
+
 factory = await factory.deploy(...Object.values(constructorArgs))
 
 // save deployment tx hash of contract, await deployment completion, then save contract addr
@@ -64,6 +70,12 @@ contract.instance = new ethers.Contract(contract.address, contract.abi, wallet);
 // issue a read operation to a contract function on-chain
 const onChainName = await contract.instance.name();
 console.log(`on-chain contract name: ${onChainName}`)
+
+// **Log the transfer transaction data (before sending)**
+
+const transferTxData = await contract.instance.populateTransaction.transfer(wallet.address, 1);
+console.log("Transfer transaction data (before sending):", transferTxData);
+
 
 // issue a write operation to a contract function on-chain (transfer to self)
 const tx = await contract.instance.transfer(wallet.address, 1);
